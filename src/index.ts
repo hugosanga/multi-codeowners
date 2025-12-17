@@ -18,9 +18,9 @@ async function run(): Promise<void> {
 
     const context = github.context;
     
-    // Only run on pull request events
-    if (context.eventName !== 'pull_request') {
-      core.info(`❌ Event ${context.eventName} is not supported. Only pull_request events are handled.`);
+    // Only run on pull_request and pull_request_review events
+    if (context.eventName !== 'pull_request' && context.eventName !== 'pull_request_review') {
+      core.info(`❌ Event ${context.eventName} is not supported. Only pull_request and pull_request_review events are handled.`);
       return;
     }
 
